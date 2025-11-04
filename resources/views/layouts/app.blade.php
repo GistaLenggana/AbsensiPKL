@@ -32,7 +32,7 @@
 
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            background: linear-gradient(135deg, #ffffffff 0%, #3b82f6 50%, #60a5fa 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: var(--dark);

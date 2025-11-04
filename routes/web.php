@@ -21,4 +21,4 @@ Route::get('/absensi/success', [AbsensiController::class, 'success'])->name('abs
 
 // Dashboard Admin
 // Halaman dashboard untuk lihat data absensi (GET)
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard.index');
