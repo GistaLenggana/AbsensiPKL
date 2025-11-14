@@ -461,7 +461,7 @@ php artisan storage:link
 chmod -R 755 storage/app/public
 ```
 
-## 📞 Support & Contact
+## Support & Contact
 
 Untuk support, hubungi:
 

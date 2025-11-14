@@ -69,14 +69,20 @@ class AuthController extends Controller
             'role' => 'user',
         ]);
 
-        // Create user profile
-        UserProfile::create([
-            'user_id' => $user->id,
-            'school_name' => $validated['school_name'],
-            'division' => $validated['division'],
-        ]);
+        // Create user profile - pastikan berhasil dibuat
+        try {
+            UserProfile::create([
+                'user_id' => $user->id,
+                'school_name' => $validated['school_name'],
+                'division' => $validated['division'],
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('UserProfile creation error: ' . $e->getMessage());
+            return back()->with('error', 'Error membuat profil. Silakan coba lagi.');
+        }
 
         Auth::login($user);
+        $request->session()->regenerate();
 
         return redirect()->route('user.dashboard')->with('success', 'Registrasi berhasil!');
     }

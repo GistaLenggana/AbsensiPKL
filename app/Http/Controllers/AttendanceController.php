@@ -20,6 +20,13 @@ class AttendanceController extends Controller
     public function userDashboard()
     {
         $user = Auth::user();
+        
+        // Check apakah user profile sudah dibuat
+        if (!$user->profile) {
+            \Log::warning("User {$user->id} ({$user->email}) tidak memiliki profile");
+            return redirect('/')->with('error', 'Profil user belum lengkap. Silakan hubungi admin.');
+        }
+        
         $today = now()->toDateString();
 
         // Get today's attendance

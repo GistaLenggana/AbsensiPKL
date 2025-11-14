@@ -63,7 +63,6 @@
                 <div style="background: #f0f9ff; border-left: 3px solid var(--info); padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 13px;">
                     <p style="margin: 0 0 6px 0; font-weight: 600; color: #0369a1;">💡 Demo Login:</p>
                     <p style="margin: 2px 0; color: #0c4a6e;"><strong>Admin:</strong> admin@bpkad.local / admin123</p>
-                    <p style="margin: 2px 0; color: #0c4a6e;"><strong>User:</strong> karyawan1@bpkad.local / password123</p>
                 </div>
 
                 <!-- Submit Button -->

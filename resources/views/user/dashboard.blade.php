@@ -3,6 +3,10 @@
 @section('title', 'Dashboard - Absensi BPKAD Garut')
 
 @section('content')
+
+<!-- Diary Popup Component -->
+@include('components.bolehdihapuskaloudahbaca')
+
 <!-- Header Card -->
 <div class="card" style="margin-bottom: 24px;">
     <div class="card-header">
@@ -10,16 +14,17 @@
         <p>Selamat datang, {{ Auth::user()->name }}! 👋</p>
     </div>
     <div class="card-body">
+        @php $profile = Auth::user()->profile ?? null; @endphp
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
             <div>
                 <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Bidang Penempatan</p>
                 <p style="font-size: 16px; font-weight: 700; color: var(--primary);">
-                    {{ Auth::user()->profile?->getDivisionLabel() ?? 'Belum diatur' }}
+                    {{ $profile?->getDivisionLabel() ?? 'Belum diatur' }}
                 </p>
             </div>
             <div>
                 <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Sekolah/Universitas</p>
-                <p style="font-size: 16px; font-weight: 700;">{{ Auth::user()->profile?->school_name ?? 'Belum diatur' }}</p>
+                <p style="font-size: 16px; font-weight: 700;">{{ $profile?->school_name ?? 'Belum diatur' }}</p>
             </div>
         </div>
     </div>

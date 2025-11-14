@@ -63,7 +63,7 @@
                         <span class="required">*</span>
                     </label>
                     <input type="text" name="school_name" value="{{ old('school_name') }}" class="form-control" 
-                        placeholder="Contoh: SMA Negeri 1 / Universitas ABC" required>
+                        placeholder="Contoh: SMK Negeri 1 / Universitas ABC" required>
                     <small class="form-hint">Nama lengkap institusi pendidikan</small>
                 </div>
 
