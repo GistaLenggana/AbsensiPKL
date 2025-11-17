@@ -77,49 +77,71 @@ class AttendanceController extends Controller
 
         // Validasi input
         $validated = $request->validate([
-            'photo_data' => 'nullable|string',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
+            'photo_data' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'notes' => 'nullable|string|max:500',
         ]);
 
         // Check apakah masih dalam jam absensi (sebelum jam 8 pagi)
-        $checkInTime = now()->toTimeString();
+        $checkInTime = now('Asia/Jakarta')->toTimeString();
         $deadline = self::CHECK_IN_DEADLINE;
         $isLate = $checkInTime > $deadline;
 
         // Simpan foto jika ada
         $photoPath = null;
         if (!empty($validated['photo_data'])) {
-            $base64 = $validated['photo_data'];
-            $base64 = str_replace('data:image/jpeg;base64,', '', $base64);
-            $photoData = base64_decode($base64);
-            $photoName = 'attendance_' . $user->id . '_' . now()->timestamp . '.jpg';
-            $photoPath = 'attendances/' . $photoName;
-            
-            if (!file_exists(storage_path('app/public/attendances'))) {
-                mkdir(storage_path('app/public/attendances'), 0755, true);
+            try {
+                $base64 = $validated['photo_data'];
+                
+                // Handle different base64 formats
+                if (strpos($base64, 'data:image') === 0) {
+                    $base64 = preg_replace('#^data:image/\w+;base64,#i', '', $base64);
+                }
+                
+                $photoData = base64_decode($base64, true);
+                
+                if ($photoData === false) {
+                    return back()->with('error', '❌ Format foto tidak valid!');
+                }
+                
+                // Create directory if not exists
+                $storagePath = storage_path('app/public/attendances');
+                if (!file_exists($storagePath)) {
+                    mkdir($storagePath, 0755, true);
+                }
+                
+                $photoName = 'attendance_' . $user->id . '_' . now()->timestamp . '.jpg';
+                $photoPath = 'attendances/' . $photoName;
+                
+                file_put_contents(storage_path('app/public/' . $photoPath), $photoData);
+            } catch (\Exception $e) {
+                \Log::error('Foto simpan error: ' . $e->getMessage());
+                return back()->with('error', '❌ Gagal menyimpan foto. Silakan coba lagi.');
             }
-            
-            file_put_contents(storage_path('app/public/' . $photoPath), $photoData);
         }
 
-        $attendance = Attendance::create([
-            'user_id' => $user->id,
-            'date' => $today,
-            'check_in_time' => $checkInTime,
-            'status' => $isLate ? 'late' : 'present',
-            'photo_path' => $photoPath,
-            'location_latitude' => $validated['latitude'] ?? null,
-            'location_longitude' => $validated['longitude'] ?? null,
-            'notes' => $validated['notes'] ?? null,
-        ]);
+        try {
+            $attendance = Attendance::create([
+                'user_id' => $user->id,
+                'date' => $today,
+                'check_in_time' => $checkInTime,
+                'status' => $isLate ? 'late' : 'present',
+                'photo_path' => $photoPath,
+                'location_latitude' => $validated['latitude'] ?? null,
+                'location_longitude' => $validated['longitude'] ?? null,
+                'notes' => $validated['notes'] ?? null,
+            ]);
 
-        $message = $isLate
-            ? 'Absensi tercatat sebagai TERLAMBAT! Jam masuk: ' . Carbon::parse($checkInTime)->format('H:i:s')
-            : 'Absensi tercatat sebagai HADIR! Jam masuk: ' . Carbon::parse($checkInTime)->format('H:i:s');
+            $message = $isLate
+                ? 'Absensi tercatat sebagai TERLAMBAT! Jam masuk: ' . Carbon::parse($checkInTime)->format('H:i:s')
+                : 'Absensi tercatat sebagai HADIR! Jam masuk: ' . Carbon::parse($checkInTime)->format('H:i:s');
 
-        return back()->with('success', $message);
+            return back()->with('success', $message);
+        } catch (\Exception $e) {
+            \Log::error('Attendance create error: ' . $e->getMessage());
+            return back()->with('error', '❌ Gagal menyimpan absensi. Silakan coba lagi.');
+        }
     }
 
     /**
@@ -143,10 +165,10 @@ class AttendanceController extends Controller
         }
 
         $attendance->update([
-            'check_out_time' => now()->toTimeString(),
+            'check_out_time' => now('Asia/Jakarta')->toTimeString(),
         ]);
 
-        return back()->with('success', 'Check-out berhasil! Jam keluar: ' . now()->format('H:i:s'));
+        return back()->with('success', 'Check-out berhasil! Jam keluar: ' . now('Asia/Jakarta')->format('H:i:s'));
     }
 
     /**

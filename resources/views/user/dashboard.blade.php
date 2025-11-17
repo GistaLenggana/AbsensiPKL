@@ -398,8 +398,15 @@
     }
 
     document.getElementById('checkInForm').addEventListener('submit', function(e) {
+        const photoData = document.getElementById('photoData').value;
         const lat = document.getElementById('latitude').value;
         const lng = document.getElementById('longitude').value;
+        
+        if (!photoData) {
+            e.preventDefault();
+            alert('⚠️ Mohon ambil foto terlebih dahulu!');
+            return false;
+        }
         
         if (!lat || !lng) {
             e.preventDefault();

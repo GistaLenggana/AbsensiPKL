@@ -9,7 +9,15 @@
             <!-- Diary Content -->
             <div class="diary-content">
                 <p id="diaryText" class="diary-text">
-                    hai cantik apakabar maaf ya aku ga ada kabar maaf juga sama masalah masalah kemarin aku bikin gini karna gatau kenapa tiba tiba kepikiran pengen bikin kaya gini kangen kali ya haha gimana pkl terakhir kamu? rame? cape kah? aku juga udah lama ga denger kabar kamu lagi yaa ga enak banget harus kayak gini sekarang sama kita aku ngerti sama kamu cape kalo terus terusan sama aku yang ga pernah bisa ngasih apa yang kamu pengen mungkin nanti ada waktunya kita bisa bareng lagi maaf ya aku banyak bikin kesalahan sama kamu banyak minta ini itu banyak janji ini itu ke kamu maaf sama semuanya aku pasti terus ngejar kamu ada waktunya pasti kita bisa bareng lagi oh iya kalo nanti kamu baca ini waktu kita bareng lagi aku cuman pengen bilang makasih makasih sama apa yang udah kamu usahain makasih sama apa yang udah kamu kasih makasih atas semuanyaa aku beruntung pisan dapet kamu aku beruntung pisan kenal sama kamu makasih udah mau sama aku lagi kabarin ke rasya ya kalo kamu baca ini waktu kita bareng lagi haha kasih tau ke rasya jangan nyakitin wae gista gitu hahaa semoga ada waktunya kita bisa bareng lagi ya 🙂‍↕️ kalo misal kamu baca ini kita masih ga bareng yaaa aku minta maaf kaya yang aku ketik di atas di awal maksudnya jangan segan segan buat nanya ke aku kalo ada apa apa biasa aja aku juga pasti ngerti kok hehe semangat yah buat kamu cantik semangatttt semangat sayangg semangattt cantikkkkk semangattt kamu kalo mau hapus bagian ini boleh biar ga muncul terus waktu kamu login pake nama kamu (bolehdihapuskaloudahbaca) nanti hapus aja file file itu atau ga nanya ke aku juga boleh atau ke siapapun juga makasih dan maaf ya gabisa ada buat kamu muluuu haha dadahhh makasih oh iya maaf ya aku bikin kaya gini di web nya hehe dadahh
+Hai cantik, apa kabar? Maaf ya aku ga ada kabar, maaf juga sama masalah-masalah kemarin. Aku bikin gini karena gatau kenapa tiba-tiba kepikiran pengen bikin kaya gini, kangen kali ya haha. Gimana PKL terakhir kamu? Rame? Cape kah? Aku juga udah lama ga denger kabar kamu lagi ya, ga enak banget harus kayak gini sekarang sama kita.
+
+Aku ngerti sama kamu cape kalo terus-terusan sama aku yang ga pernah bisa ngasih apa yang kamu pengen. Mungkin nanti ada waktunya kita bisa bareng lagi. Maaf ya aku banyak bikin kesalahan sama kamu, banyak minta ini itu, banyak janji ini itu ke kamu, maaf sama semuanya. Aku pasti terus ngejar kamu, ada waktunya pasti kita bisa bareng lagi.
+
+Oh iya, kalo nanti kamu baca ini waktu kita bareng lagi, aku cuman pengen bilang makasih. Makasih sama apa yang udah kamu usahain, makasih sama apa yang udah kamu kasih, makasih atas semuanya. Aku beruntung pisan dapet kamu, aku beruntung pisan kenal sama kamu. Makasih udah mau sama aku lagi. Kabarin ke Rasya ya kalo kamu baca ini waktu kita bareng lagi haha, kasih tau ke Rasya jangan nyakitin wae Gista gitu haha. Semoga ada waktunya kita bisa bareng lagi ya 🙂‍↕️
+
+Kalo misal kamu baca ini kita masih ga bareng, ya aku minta maaf kaya yang aku ketik di atas, di awal maksudnya. Jangan segan-segan buat nanya ke aku kalo ada apa-apa, biasa aja, aku juga pasti ngerti kok hehe. Semangat yah buat kamu cantik, semangat, semangat sayang, semangat cantik, semangat!
+
+Kamu kalo mau hapus bagian ini boleh biar ga muncul wae waktu kamu login pake nama kamu (bolehdihapuskalauudahbaca). Nanti hapus aja file itu atau ga nanya ke aku juga boleh atau ke siapapun juga. Makasih dan maaf ya gabisa ada buat kamu mulu haha. Dadah, makasih. Oh iya maaf ya aku bikin kaya gini di web kamu  hehe, dadah!
                 </p>
             </div>
         </div>
@@ -123,7 +131,7 @@
         }
 
         .diary-text {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             font-size: 15px;
             line-height: 1.8;
             color: #3d2817;
@@ -131,7 +139,6 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             letter-spacing: 0.3px;
-            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
         }
 
         @keyframes fadeOut {
