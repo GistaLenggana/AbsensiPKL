@@ -460,14 +460,3 @@ Run: `php artisan migrate`
 php artisan storage:link
 chmod -R 755 storage/app/public
 ```
-
-## Support & Contact
-
-Untuk support, hubungi:
-
--   Email: admin@bpkad.local
--   Departemen IT: [contact-info]
-
-## 📄 License
-
-Licensed under MIT License. Copyright © 2025 BPKAD Garut.
